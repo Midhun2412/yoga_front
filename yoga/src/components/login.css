@@ -1,0 +1,77 @@
+/* src/components/Login.css */
+.form-container {
+    position: fixed;
+    margin-top: 30vh;
+    width: 400px;
+    height:300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 10vh;
+   
+    padding: 20px;
+    opacity: 0.7;
+    border-radius: 10px;
+  }
+  
+  .form-container h2 {
+    color: #eeeded;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+  
+  .form-container button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+   .form-container button:hover {
+    background-color: #2980b9;
+  }
+  
+ 
+ 
+ 
+  .login-signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('H:\Final\yoga_front\yoga\src\loginbg.jpg'); /* Add your background image URL here */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #fff;
+  }
+  
+  .form-container p {
+    
+    color: #3498db;
+    cursor: pointer;
+    margin-top: 10px;
+    color:white;
+  }
+  
+  p:hover {
+    text-decoration: underline;
+  }
+  
