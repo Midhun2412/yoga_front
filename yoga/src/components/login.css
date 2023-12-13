@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('H:\Final\yoga_front\yoga\src\loginbg.jpg'); /* Add your background image URL here */
+    background-image: url('C:\Users\online\Desktop\Yoga frontend\yoga_front\yoga\src\components\media\loginbg.jpeg'); 
     background-size: cover;
     background-position: center;
     height: 100vh;
