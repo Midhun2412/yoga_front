@@ -1,0 +1,27 @@
+.feedback-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+
+}
+
+.feed{
+    width:250px;
+    height:400px;
+    text-align: center;
+    border: 15px #f0eaea;
+    background-color: aliceblue;
+}
+#feed1{
+    background-color:#333;
+    color: #f0eaea;
+}
+#feed2{
+    background-color: #333;
+    color: #f0eaea;
+}
+#feed3{
+    background-color:#333;
+    color:#f0eaea
+}

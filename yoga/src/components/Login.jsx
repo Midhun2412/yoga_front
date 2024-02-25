@@ -21,8 +21,8 @@ function handleClick(){
 
       fetch(endpoint,
           {
-              method: 'POST',
               headers: {
+              method: 'POST',
                   'Accept': 'application/json',
                   'Content-Type': 'application/json'
               },
@@ -32,8 +32,8 @@ function handleClick(){
           .then(data => {
              if(data==="SUCCESS")
              {
-                 
-              navigate("/login/home");
+               const uid=email;  
+              navigate('/login/home');
              }
              else{
                  window.alert("Please check your login")

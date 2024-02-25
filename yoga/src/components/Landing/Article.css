@@ -1,0 +1,24 @@
+.articleflex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+
+}
+
+.box{
+    width:250px;
+    height:400px;
+    text-align: center;
+    border: 15px #000;
+    background-color: aliceblue;
+}
+#box1{
+    background-color: brown;
+}
+#box2{
+    background-color: blueviolet;
+}
+#box3{
+    background-color: blue;
+}

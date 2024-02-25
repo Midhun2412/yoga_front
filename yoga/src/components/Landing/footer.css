@@ -1,0 +1,39 @@
+.foot{
+    display: flex;
+    justify-content: space-between;
+}
+
+#foot1{
+    padding-top: 300px;
+    padding-left: 15px;
+    color:aliceblue;
+    font-size: 19px;
+}
+
+#foot2{
+    padding-top: 300px;
+    padding-left: 10px;
+    color:aliceblue;
+    font-size: 16px;
+}
+
+#foot3{
+    padding-top: 300px;
+    padding-left: 10px;
+    color:aliceblue;
+    font-size: 16px;
+}
+
+#foot4{
+    padding-top: 300px;
+    padding-left: 10px;
+    color:aliceblue;
+    font-size: 16px;
+}
+
+#foot5{
+    padding-top: 300px;
+    padding-right: 10px;
+    color:aliceblue;
+    font-size: 16px;
+}

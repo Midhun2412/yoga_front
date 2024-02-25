@@ -1,0 +1,9 @@
+.feature1-flex{
+    display: flex;
+    height: 100vh;
+    justify-content:space-evenly;
+}
+
+#f1{
+    background-color: black;
+}
