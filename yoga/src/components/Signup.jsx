@@ -10,44 +10,41 @@ function Signup() {
   const [dob, setDob] = useState('');
   let navigate = useNavigate();
   function handleClick() {
-
-
-    const endpoint = 'http://127.0.0.1:8000/home/signup/'
+    const endpoint = 'http://127.0.0.1:8000/home/signup/';
     if (password === cpassword) {
       const payload = {
         signupname: name,
         signuppassword: password,
         signupdob: dob,
         signupemail: email
-      }
+      };
       console.log(payload);
-
-      fetch(endpoint,
-        {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        })
-        .then(response => response.json())
-        .then(data => {
-          if(data==="SUCCESS")
-          {
-            const uid=email;  
-           navigate('/login/home');
-          }
-          else{
-              window.alert("Your Already Exist")
-          }
-         
-        })
-    }
-    else {
+  
+      fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data === "SUCCESS") {
+          const uid = email;
+          navigate('/login/home/'+uid);
+        } else {
+          window.alert("User already exists.");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    } else {
       window.alert("Password doesn't match");
     }
   }
+  
   return (
     <div className="form-container">
       <h2>SignUp</h2>

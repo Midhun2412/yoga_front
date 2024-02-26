@@ -8,40 +8,39 @@ function Login(){
   const [password, setPassword] = useState('');
   // const [payload, setPayload] = useState()
   let navigate=useNavigate();
-function handleClick(){
-
- 
- const endpoint = 'http://127.0.0.1:8000/home/login/'
-      
-      const payload = {
-         useremail: email,
-         userpassword: password
+  function handleClick() {
+    const endpoint = 'http://127.0.0.1:8000/home/login/';
+    
+    const payload = {
+      useremail: email,
+      userpassword: password
+    };
+    
+    console.log(payload);
+    
+    fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data === "SUCCESS") {
+        const uid = email;
+        navigate('/login/home/'+uid);
+        console.log("success");
+      } else {
+        window.alert("Please check your login");
       }
-      console.log(payload)
-
-      fetch(endpoint,
-          {
-              headers: {
-              method: 'POST',
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(payload)
-          })
-          .then(response => response.json())
-          .then(data => {
-             if(data==="SUCCESS")
-             {
-               const uid=email;  
-              navigate('/login/home');
-             }
-             else{
-                 window.alert("Please check your login")
-             }
-          })
-
-  // navigate("/login/home");
-}
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+  
   return (
     <div className="form-container">
       <h2>Login</h2>

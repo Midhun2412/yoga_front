@@ -1,17 +1,22 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
 
 const WebcamComponent = () => {
   const webcamRef = useRef(null);
+  const [isCapturing, setIsCapturing] = useState(true);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      captureAndUpload();
-    }, 500);
+    let intervalId;
 
-    // Clear the interval on component unmount
+    if (isCapturing) {
+      intervalId = setInterval(() => {
+        captureAndUpload();
+      }, 500);
+    }
+
+    
     return () => clearInterval(intervalId);
-  }, []);
+  }, [isCapturing]);
 
   const captureAndUpload = async () => {
     const imageSrc = webcamRef.current.getScreenshot();
@@ -20,11 +25,11 @@ const WebcamComponent = () => {
       try {
         const blob = await fetch(imageSrc).then((res) => res.blob());
 
-        // Create a FormData object
+       
         const formData = new FormData();
         formData.append('image', blob, 'captured-image.png');
 
-        // Replace 'your-backend-endpoint' with the actual endpoint URL
+       
         const response = await fetch('http://127.0.0.1:8000/home/image/', {
           method: 'POST',
           body: formData,
@@ -32,7 +37,7 @@ const WebcamComponent = () => {
 
         if (response.ok) {
           console.log('Image uploaded successfully!');
-          // You can handle the successful upload here
+          
         } else {
           console.error('Failed to upload image');
         }
@@ -42,15 +47,22 @@ const WebcamComponent = () => {
     }
   };
 
+  const toggleCapture = () => {
+    setIsCapturing((prevIsCapturing) => !prevIsCapturing);
+  };
+
   return (
     <div>
       <Webcam
         audio={false}
         height={480}
         ref={webcamRef}
-        screenshotFormat="image/png"  // Set the screenshot format to PNG
+        screenshotFormat="image/png" 
         width={640}
       />
+      <button onClick={toggleCapture}>
+        {isCapturing ? 'Stop Pose' : 'Start Pose'}
+      </button>
     </div>
   );
 };

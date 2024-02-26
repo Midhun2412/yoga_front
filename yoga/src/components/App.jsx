@@ -14,7 +14,7 @@ function App() {
           <Route index element={<Land />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<LoginSignup />} />
-          <Route path="/login/home" element={<Home />} />
+          <Route path="/login/home/:uid" element={<Home />} />
           <Route path="/login/home/start" element={<WebcamComponent />} />
           
         </Routes>
