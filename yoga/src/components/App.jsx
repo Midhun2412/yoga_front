@@ -6,6 +6,7 @@ import LoginSignup from "./LoginSignup";
 import Home from "./Home";
 import About from "./About";
 import WebcamComponent from "./WebcamComponent";
+import HomePage from "./Homepage/HomePage";
 function App() {
   return (
     <div>
@@ -14,7 +15,7 @@ function App() {
           <Route index element={<Land />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<LoginSignup />} />
-          <Route path="/login/home/:uid" element={<Home />} />
+          <Route path="/login/home/:uid" element={<HomePage />} />
           <Route path="/login/home/start" element={<WebcamComponent />} />
           
         </Routes>
