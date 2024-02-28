@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-
+import DemoPose from'./DemoPose'
+import './HomePage.css'
 function HomePage() {
    
   const {uid} =useParams();
@@ -22,7 +23,15 @@ function HomePage() {
 console.log(user);
 
   return (
-    <div>HomePage</div>
+    <div className='homepage'>
+      <div className='homep' id='#hp1'>
+        <h1><span className="chfont">Hello</span> {user.signupname}</h1>
+        <p id="pg1">Welcome To MATYOGI</p>
+        <p id="pg2">Try out This pose</p>
+      </div>
+      
+      <DemoPose />
+    </div>
   )
 }
 

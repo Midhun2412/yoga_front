@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
-
+import './WC.css'
 const WebcamComponent = () => {
   const webcamRef = useRef(null);
   const [isCapturing, setIsCapturing] = useState(true);
@@ -52,7 +52,7 @@ const WebcamComponent = () => {
   };
 
   return (
-    <div>
+    <div className='webcam-container'>
       <Webcam
         audio={false}
         height={480}

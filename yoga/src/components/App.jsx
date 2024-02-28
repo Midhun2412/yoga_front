@@ -17,7 +17,6 @@ function App() {
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/login/home/:uid" element={<HomePage />} />
           <Route path="/login/home/start" element={<WebcamComponent />} />
-          
         </Routes>
         </BrowserRouter>
     </div>
