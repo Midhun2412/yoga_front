@@ -1,3 +1,5 @@
+  
+
 .feature1-flex{
     display: flex;
     height: 100vh;
@@ -10,13 +12,40 @@
  width: 50%;
 }
 
+.f h2{
+    padding-top: 6vh;
+}
+
+.f h1{
+  font-size: 300%;
+}
+
+.f p{
+    font-size: 140%;
+}
+
 #f2{
     padding-top: 80px;
     text-align: left;
 }
 
-#img1{
-    padding-left: 200px;
-    padding-top: 180px;
+.imgbox {
+    background-color: #181718;
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 7%;
+    margin: 20vh auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+ #img1{
+    /* margin: 10vh 10vh auto; */
+    height: 80%;
+    width:80%;
     
-}
+    
+}  

@@ -9,6 +9,7 @@ import { Articles } from './Articles'
 import Feedback from './Feedback'
 import Footer from './Footer'
 import Feature1 from './Feature1'
+
 function Land(){
   return (
     <div className="App">
