@@ -12,9 +12,9 @@ const Feature1 = () => {
     
      </div>
      <div className='f' id='f2'>
-     <h2>FEATURE</h2>
-     <h1>Easy-to use AI technology</h1>
-     <p>From pose guidance to form correction, we<br/>offer comprehensive yoga solutions with<br/>cutting-edge AI technology</p>
+     <h1>Easy-to-use AI technology</h1>
+    <h6>From pose guidance to form correction, we offer comprehensive <br></br>yoga solutions with cutting-edge AI</h6>
+    <button className='bf1'>Learn more</button>
      </div>
     </div>
   )

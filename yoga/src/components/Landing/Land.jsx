@@ -9,6 +9,8 @@ import { Articles } from './Articles'
 import Feedback from './Feedback'
 import Footer from './Footer'
 import Feature1 from './Feature1'
+import Feature3 from './Feature3'
+import Feature2 from './Feature2'
 
 function Land(){
   return (
@@ -26,10 +28,10 @@ function Land(){
             <Feature1 />
           </section>
           <section className='feature2'>
-            Feature 2
+            <Feature2 />
           </section>
           <section className='feature3'>
-            Feature 3
+            {/* <Feature3 /> */}
           </section>
           <section className='feature4'>
             Feature 4
