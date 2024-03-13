@@ -1,14 +1,15 @@
 import React from 'react'
 import './feature2.css'
-import F1 from './feature1.png'
+import F1 from './feature2.png'
 const Feature2 = () => {
   return (
     <div className='feature2-flex'>
      
      <div className='fe' id='f3'>
-     <h1>Easy-to-use AI technology</h1>
-    <h6>From pose guidance to form correction, we offer comprehensive <br></br>yoga solutions with cutting-edge AI</h6>
-    <button className='bf1'>Learn more</button>
+     <h2>FEATURE</h2> 
+     <h1>Simplicity at its best</h1>
+    <h6>Our commitment to simplicity ensures a seamless yoga experience.<br></br> Let our AI technology guide you towards perfecting your poses effortlessly.</h6>
+    <button className='bf2'>Learn more</button>
      </div>
 
      <div className='fe' id='f1'> 

@@ -36,18 +36,19 @@
 }
 
 .f h2{
-    font-size: 150%;
+    font-size: 175%;
     padding-top: 20vh;
 }
 
 .f h1{
     font-size: 350%;
     font-family: "poppins";
+    padding-top: 2vh;
 }
 
 .f h6{
     font-size: 130%;
-    padding-top: 5vh;
+    padding-top: 2vh;
     font-weight: 100;
 }
 

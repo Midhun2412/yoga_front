@@ -12,7 +12,8 @@
 
 #f3{
     padding-top: 80px;
-    text-align: right;
+    text-align: left;
+    padding-left: 10%;
 }
 
 .imgbox {
@@ -36,27 +37,29 @@
 }
 
 .fe h2{
-    font-size: 150%;
-    padding-top: 20vh;
+    font-size: 175%;
+    padding-top: 15vh;
 }
 
 .fe h1{
     font-size: 350%;
     font-family: "poppins";
+    padding-top: 2vh;
 }
 
 .fe h6{
     font-size: 130%;
-    padding-top: 5vh;
+    padding-top: 2vh;
     font-weight: 100;
 }
 
-.bf1{
+.bf2{
     padding: 1.2vh;
     padding-left: 5vh;
     padding-right: 5vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 5vh;
+    margin-right: 25%;
     margin-left: 25%;
     font-size: 110%;
     background-color: rgb(64, 63, 63);
