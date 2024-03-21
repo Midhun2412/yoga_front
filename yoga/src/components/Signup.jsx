@@ -47,7 +47,7 @@ function Signup() {
   
   return (
     <div className="form-container">
-      <h2>SignUp</h2>
+      <h2>Register Now</h2>
 
       <label>
         Name:

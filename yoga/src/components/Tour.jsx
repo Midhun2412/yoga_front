@@ -1,48 +1,49 @@
-import React, { useState } from 'react';
-import Joyride from 'react-joyride';
+import React, { useState, useEffect } from 'react';
 
-const JoyrideTutorial = () => {
-  const [runTutorial, setRunTutorial] = useState(true);
+function ImageComponent() {
+  const [imageSrc, setImageSrc] = useState(null);
 
-  const steps = [
-    {
-      target: '.step-1',
-      content: 'Step 1: This is the first step of the tutorial.',
-    },
-    {
-      target: '.step-2',
-      content: 'Step 2: This is the second step of the tutorial.',
-    },
-    {
-      target: '.step-3',
-      content: 'Step 3: This is the final step of the tutorial.',
-    },
-  ];
+  useEffect(() => {
+    // Make a GET request to the Django backend endpoint that serves the image
+    fetch('/your-django-backend-url/image/')
+      .then(response => {
+        // Check if the response is successful
+        if (response.ok) {
+          // Convert the response body to blob (binary data)
+          return response.blob();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(blob => {
+        // Convert the blob to a data URL
+        const url = URL.createObjectURL(blob);
+        // Set the data URL as the image source
+        setImageSrc(url);
+      })
+      .catch(error => {
+        console.error('Error fetching image:', error);
+      });
 
-  const handleJoyrideCallback = (data) => {
-    const { status } = data;
-
-    if ([Joyride.STATUS.FINISHED, Joyride.STATUS.SKIPPED].includes(status)) {
-      setRunTutorial(false);
-    }
-  };
+    // Clean up resources when the component unmounts
+    return () => {
+      if (imageSrc) {
+        // Revoke the data URL to release resources
+        URL.revokeObjectURL(imageSrc);
+      }
+    };
+  }, []); // Run only once when the component mounts
 
   return (
     <div>
-      <h1>React Joyride Tutorial</h1>
-      <button onClick={() => setRunTutorial(true)}>Start Tutorial</button>
-      <div className="step-1">Step 1 Content</div>
-      <div className="step-2">Step 2 Content</div>
-      <div className="step-3">Step 3 Content</div>
-      <Joyride
-        steps={steps}
-        run={runTutorial}
-        continuous
-        showSkipButton
-        callback={handleJoyrideCallback}
-      />
+      {imageSrc ? (
+        // Display the image if the image source is available
+        <img src={imageSrc} alt="Image" />
+      ) : (
+        // Display a placeholder or loading indicator while the image is being fetched
+        <p>Loading image...</p>
+      )}
     </div>
   );
-};
+}
 
-export default JoyrideTutorial;
+export default ImageComponent;
