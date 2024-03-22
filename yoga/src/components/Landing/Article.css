@@ -11,7 +11,8 @@
     height:400px;
     text-align: center;
     border: 15px #000;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    color: white;
 }
 #box1{
     background-color: brown;

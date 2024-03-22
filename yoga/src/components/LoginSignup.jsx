@@ -12,7 +12,7 @@ const LoginSignup = () => {
 
   return (
     <div className="login-signup-container">
-      <h1>MAT YOGI</h1>
+      <h1>MATYOGI</h1>
       {isLogin ? <Login /> : <Signup />}
       <p  onClick={toggleForm}>
         {isLogin ? 'Don\'t have an account? Sign up here.' : 'Already have an account? Login here.'}

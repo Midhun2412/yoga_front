@@ -85,7 +85,7 @@ function handleClick()
       {poseData && (
         <div className='demopose' id='dp1'>
           <h2>{poseData.poseName}</h2>
-          <img src={imageSrc} alt="Tadasana" height={500}  width={500}/>
+          {/* <img src={imageSrc} alt="Tadasana" height={500}  width={500}/> */}
         </div>
       )}
       <div className='demopose' id='dp2'>

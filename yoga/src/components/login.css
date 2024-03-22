@@ -47,8 +47,9 @@
     /* padding: 10px 18vh ;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
+    
     font-size: 16px; */
+    cursor: pointer;
     font-size: larger;
     width: 100%;
     padding: 1vh;
@@ -102,6 +103,7 @@
     color:white;
     font-weight:bold;
     text-decoration: none;
+    cursor:pointer;
   }
 
   .login-signup-container h1{

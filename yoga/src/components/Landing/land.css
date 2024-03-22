@@ -35,7 +35,7 @@
 
   .articles{
      text-align: center;
-     color: aliceblue;
+     color: white;
   }
 
   .articles h3{
@@ -50,7 +50,7 @@
     padding-top: 10px;
     text-align: center;
     background-color: black;
-    color: aliceblue;
+    color: white;
   }
 
  .footer{
