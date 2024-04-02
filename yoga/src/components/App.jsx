@@ -7,6 +7,7 @@ import Home from "./Home";
 import About from "./About";
 import WebcamComponent from "./WebcamComponent";
 import HomePage from "./Homepage/HomePage";
+import Posepage from "./Homepage/Posepage";
 function App() {
   return (
     <div>

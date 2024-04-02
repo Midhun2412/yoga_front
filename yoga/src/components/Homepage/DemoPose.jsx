@@ -10,14 +10,16 @@ const YourComponent = () => {
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        if (data && data.length > 0) {
-          const firstPose = data[0]; 
-          setPoseData(firstPose);
-         console.log(firstPose.poseName)
-         x=firstPose.poseName;
-        } else {
-          console.error('No data found');
-        }
+        // if (data && data.length > 0) {
+        //   const firstPose = data[0]; 
+        //   setPoseData(firstPose);
+        //  console.log(firstPose)
+        //  x=firstPose.poseName;
+        // } else {
+        //   console.error('No data found');
+        // }
+
+        console.log(data)
       })
       .catch(error => console.error('Error fetching data:', error));
 
@@ -85,7 +87,7 @@ function handleClick()
       {poseData && (
         <div className='demopose' id='dp1'>
           <h2>{poseData.poseName}</h2>
-          {/* <img src={imageSrc} alt="Tadasana" height={500}  width={500}/> */}
+          <img src={imageSrc} alt="Tadasana" height={500}  width={500}/> 
         </div>
       )}
       <div className='demopose' id='dp2'>
