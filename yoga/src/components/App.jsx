@@ -17,6 +17,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/login/home/:uid" element={<HomePage />} />
+          <Route path="/login/home/pose/:uid/:poseName" element={<Posepage />} />
           <Route path="/login/home/start" element={<WebcamComponent />} />
         </Routes>
         </BrowserRouter>

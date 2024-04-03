@@ -1,41 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import './Demopose.css'
+import './Posepage.css'
 // import { useNavigate } from 'react-router-dom';
-const YourComponent = () => {
-  const [poseData, setPoseData] = useState(null);
+const YourComponent = ({poseName}) => {
+  // console.log(poseName)
+  const [datas, setDatas] = useState();
+  let [poseData, setPoseData] = useState(null);
   const [imageSrc, setImageSrc] = useState(null);
   const apiUrl = 'http://127.0.0.1:8000/home/userpose/'; 
-  let x
+
   useEffect(() => {
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        // if (data && data.length > 0) {
-        //   const firstPose = data[0]; 
-        //   setPoseData(firstPose);
-        //  console.log(firstPose)
-        //  x=firstPose.poseName;
-        // } else {
-        //   console.error('No data found');
-        // }
-
-        console.log(data)
-      })
-      .catch(error => console.error('Error fetching data:', error));
-
-      
-  }, [apiUrl]);
+    // Function to fetch data from the backend after a delay
+    const fetchDataWithDelay = async () => {
+      try {
+        // Delay the fetch by 10ms
+        setTimeout(async () => {
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+          setDatas(data);
+          console.log(datas)
+        }, 10);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    // Call fetchDataWithDelay whenever new data is sent
+    fetchDataWithDelay();
+  }, [apiUrl]); // Fetch data whenever apiUrl changes
+  
 
    
   useEffect(() => {
       // Call handleSubmit whenever inputData changes
+     
       handleSubmit();
     }, []);
  
 
   const handleSubmit = async (event) => {
       // event.preventDefault();
-    
+      
+      if (datas && datas.poseName === poseName) {
+        console.log("yes")
+      }
       // Delay execution by 25ms
       await new Promise(resolve => setTimeout(resolve, 50));
     
@@ -45,7 +53,7 @@ const YourComponent = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ poseName: x }),
+          body: JSON.stringify({ poseName: poseName }),
       
         })
     

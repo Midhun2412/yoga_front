@@ -5,9 +5,10 @@ import { useParams } from 'react-router-dom'
 import DemoPose from'./DemoPose'
 import './HomePage.css'
 
-const Posepage = () => {
+function Posepage( ){
     const {uid} =useParams();
     console.log(uid);
+    const {poseName} =useParams();
   
     const [user, setUser]=useState({signupname: "",signuppassword: "",signupdob: "",signupemail: ""});
   
@@ -20,7 +21,8 @@ const Posepage = () => {
       getUser()
   },[]);
   
-  console.log(user);
+  // console.log(poseName);
+  // console.log(user);
   
     return (
       <div className='homepage'>
@@ -30,7 +32,7 @@ const Posepage = () => {
           <p id="pg2">Try out This pose</p>
         </div>
         
-        <DemoPose />
+        <DemoPose poseName={poseName}/>
       </div>
     )
 }
