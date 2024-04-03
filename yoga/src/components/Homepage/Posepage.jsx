@@ -32,7 +32,7 @@ function Posepage( ){
           <p id="pg2">Try out This pose</p>
         </div>
         
-        <DemoPose poseName={poseName}/>
+        <DemoPose poseName={poseName} uid={uid}/>
       </div>
     )
 }

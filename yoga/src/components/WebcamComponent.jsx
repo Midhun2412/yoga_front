@@ -1,7 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
-import './WC.css'
+import './WC.css';
+import { useParams } from 'react-router-dom';
+
 const WebcamComponent = () => {
+  const { poseName } = useParams();
+  console.log(poseName);
+
   const webcamRef = useRef(null);
   const [isCapturing, setIsCapturing] = useState(true);
 
@@ -11,10 +16,9 @@ const WebcamComponent = () => {
     if (isCapturing) {
       intervalId = setInterval(() => {
         captureAndUpload();
-      }, 500);
+      }, 5000);
     }
 
-    
     return () => clearInterval(intervalId);
   }, [isCapturing]);
 
@@ -25,39 +29,62 @@ const WebcamComponent = () => {
       try {
         const blob = await fetch(imageSrc).then((res) => res.blob());
 
-       
-        const formData = new FormData();
-        formData.append('image', blob, 'captured-image.png');
-
-       
-        const response = await fetch('http://127.0.0.1:8000/home/image/', {
+        // Upload image
+        const imageFormData = new FormData();
+        imageFormData.append('image', blob, 'captured-image.png');
+        const imageResponse = await fetch('http://127.0.0.1:8000/home/image/', {
           method: 'POST',
-          body: formData,
+          body: imageFormData,
         });
-
-        if (response.ok) {
-          console.log('Image uploaded successfully!');
-          
-        } else {
+        if (!imageResponse.ok) {
           console.error('Failed to upload image');
+          return;
         }
+
+        console.log('Image uploaded successfully!');
       } catch (error) {
         console.error('Error uploading image:', error);
       }
     }
   };
 
+  const stopCaptureAndSendSignal = async () => {
+    setIsCapturing(false);
+    
+    try {
+      // Send signal to backend when image capturing is stopped
+      const stopSignalResponse = await fetch('http://127.0.0.1:8000/stopSignalEndpoint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ signal: 'yes' }),
+      });
+      if (!stopSignalResponse.ok) {
+        console.error('Failed to send stop signal to backend');
+      } else {
+        console.log('Stop signal sent to backend successfully!');
+      }
+    } catch (error) {
+      console.error('Error sending stop signal to backend:', error);
+    }
+  };
+
   const toggleCapture = () => {
-    setIsCapturing((prevIsCapturing) => !prevIsCapturing);
+    if (isCapturing) {
+      stopCaptureAndSendSignal();
+    } else {
+      setIsCapturing(true);
+    }
   };
 
   return (
-    <div className='webcam-container'>
+    <div className="webcam-container">
       <Webcam
         audio={false}
         height={480}
         ref={webcamRef}
-        screenshotFormat="image/png" 
+        screenshotFormat="image/png"
         width={640}
       />
       <button onClick={toggleCapture}>
