@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import DemoPose from './components/Homepage/DemoPose';
 import WebcamComponent from './components/WebcamComponent';
 import Demo from './components/Demo';
+import Timer from './components/Extra/Timer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import './WC.css';
 import { useParams } from 'react-router-dom';
@@ -8,16 +8,30 @@ const WebcamComponent = () => {
   console.log(poseName);
 
   const webcamRef = useRef(null);
-  const [isCapturing, setIsCapturing] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(15); // Initial time remaining in seconds
 
   const captureAndUpload = async () => {
-    const imageSrc = webcamRef.current.getScreenshot();
+    if (webcamRef.current) {
+      const video = webcamRef.current.video;
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
 
-    if (imageSrc) {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      // Draw the video onto the canvas, flipped horizontally
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Convert the canvas to a data URL
+      const imageSrc = canvas.toDataURL('image/png');
+
+      // Upload image and poseName
       try {
         const blob = await fetch(imageSrc).then((res) => res.blob());
 
-        // Upload image and poseName
         const formData = new FormData();
         formData.append('image', blob, 'captured-image.png');
         formData.append('modelname', poseName);
@@ -38,25 +52,43 @@ const WebcamComponent = () => {
     }
   };
 
-  const toggleCapture = () => {
-    if (!isCapturing) {
-      setIsCapturing(true);
-      captureAndUpload(); // Capture and upload the image immediately
-    }
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsRecording(true); // Set isRecording to true to indicate recording
+      captureAndUpload(); // Capture and upload the image every 15 seconds
+
+      // Update time remaining
+      setTimeRemaining((prevTime) => {
+        if (prevTime === 1) {
+          clearInterval(interval); // Stop the interval when time is up
+          setIsRecording(false); // Reset isRecording to false
+          return 15; // Reset time remaining to initial value
+        } else {
+          return prevTime - 1; // Decrement time remaining
+        }
+      });
+    }, 1000); // Update time every second
+
+    return () => {
+      clearInterval(interval); // Cleanup the interval on component unmount
+    };
+  }, []);
 
   return (
     <div className="webcam-container">
       <Webcam
+        style={{ transform: 'scaleX(-1)' }}
         audio={false}
         height={480}
         ref={webcamRef}
         screenshotFormat="image/png"
         width={640}
       />
-      <button onClick={toggleCapture}>
-        {isCapturing ? 'Capturing...' : 'Capture Image'}
-      </button>
+      {isRecording && (
+        <div className="countdown-timer">
+          Time remaining: {timeRemaining} seconds
+        </div>
+      )}
     </div>
   );
 };
