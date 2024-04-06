@@ -62,7 +62,7 @@ const YourComponent = ({ poseName, uid }) => {
   }, [poseData, poseName]);
 
   const handleClick = () => {
-    window.location.href = '/login/home/start/'+uid+'/'+poseName;//link to webcm component
+    window.location.href = '/timer/'+uid+'/'+poseName;//link to webcm component
   };
 
   return (

@@ -11,15 +11,19 @@
 }
 
 #dp1{
-    padding-left: 15px;
+    padding-left: 5vh;
 }
 
 #dp2{
-    padding-top: 60px;
+    padding-top: 10vh;
     text-align: left;
     padding-right: 15px;
     font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 23px;
+    font-size: 23px; 
+}
+
+#dp2 p{
+  text-decoration: none;
 }
 
 

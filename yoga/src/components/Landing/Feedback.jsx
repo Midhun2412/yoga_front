@@ -5,7 +5,7 @@ const Feedback = () => {
     <div className='feedback-flex'>
     <div className='feed' id='feed1'>
     ❤️❤️❤️❤️❤️<br></br><br></br>
-    YogaAI has transformed my practice. Highly recommend for all levels.<br></br><br></br>
+    YogaAI has transformed my practice. Highly recommend for all levels.<br></br>
     <h6>Alex Smith</h6>
     </div>
     <div className='feed' id='feed2'>

@@ -1,4 +1,4 @@
-.homepage{
+.Posepage{
     padding-top: 20px;
     padding-left: 15px;
     background-color: #333;
@@ -12,6 +12,7 @@
 #pg1{
     font-size: 20px;
     font-style: italic;
+    text-decoration: none;
 }
 
 #pg2{

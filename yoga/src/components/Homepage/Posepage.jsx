@@ -25,7 +25,7 @@ function Posepage( ){
   // console.log(user);
   
     return (
-      <div className='homepage'>
+      <div className='Posepage'>
         <div className='homep' id='#hp1'>
           <h1><span className="chfont">Hello</span> {user.signupname}</h1>
           <p id="pg1">Welcome To MATYOGI</p>

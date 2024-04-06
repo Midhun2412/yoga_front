@@ -1,15 +1,17 @@
-body {
+.Homepage {
     background-image: url("back.jpg");
-    background-color: white;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 79vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
   }
   
 
   .Homebutton {
-    display: block;
+   
+    width:25vh;
     margin-bottom: 5px; 
     text-align: left;
     background-color: gray;
@@ -26,10 +28,10 @@ body {
   }
 
   .Homebox{
-    top: 20vh;
-    padding-top: 20vh;
+    /* top: 20vh; */
+    /* padding-top: 20vh; */
     align-items: center;
-
+    height:100vh
   }
 
 
@@ -59,3 +61,42 @@ body {
   visibility: visible;
 }
   
+
+
+.Namebox{
+
+  /* background-color: blue; */
+  width:180vh;
+}
+
+.Homebox {
+  width:50vh;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-evenly; 
+  align-items: center; 
+}
+
+.Namebox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-gap: 5px; /* Adjust the grid-gap as needed */
+  align-items: center;
+  justify-content: space-around; 
+  overflow-y: auto; 
+}
+
+.Namebox button {
+  width: fit-content; 
+  height: 15vh; 
+  text-align: center;
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 3vh;
+  border-radius: 2vh;
+  overflow: hidden; /* Prevent content from overflowing */
+  white-space: nowrap; /* Prevent wrapping of content */
+}
