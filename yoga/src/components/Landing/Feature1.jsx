@@ -15,7 +15,7 @@ const Feature1 = () => {
       <h2>FEATURE</h2>
      <h1>Easy-to-use AI technology</h1>
     <h6>From pose guidance to form correction, we offer comprehensive <br></br>yoga solutions with cutting-edge AI</h6>
-    <button className='bf1'>Learn more</button>
+    <button className='button-52'>Learn more</button>
      </div>
     </div>
   )

@@ -15,7 +15,7 @@ const Feature3 = () => {
      <h2>FEATURE</h2>
     <h1>Tailored solutions for all levels</h1>
    <h6>Whether you're a beginner or an advanced yogi, our AI-powered platform customizes<br></br> yoga poses to suit your individual practice. Experience yoga like never before.</h6>
-   <button className='bf1'>Learn more</button>
+   <button className='button-52'>Learn more</button>
     </div>
    </div>
   )

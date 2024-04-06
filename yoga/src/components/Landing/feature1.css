@@ -10,6 +10,12 @@
  width: 50%;
 }
 
+.f h6{
+    font-size: 16px;
+    font-style: italic;
+    color:#fff;
+  }
+
 /* .f #f2{
     padding-top: 80px;
     text-align: left;
@@ -52,7 +58,7 @@
     font-weight: 100;
 }
 
-.bf1{
+/* .bf1{
     padding: 1.2vh;
     padding-left: 5vh;
     padding-right: 5vh;
@@ -63,4 +69,51 @@
     background-color: rgb(64, 63, 63);
     color: white;
     border-radius: 0.75vh;
-}
+} */
+
+.button-52 {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    border: 3px ridge #ffffff;
+    outline: none;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .button-52::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: #000000;
+    transition: 0.5s;
+    transform-origin: center;
+  }
+  
+  .button-52::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: #000000;
+    transition: 0.5s;
+  }
+  
+  .button-52:hover::before, .button-52:hover::after {
+    transform: scale(0)
+  }
+  
+  .button-52:hover {
+    box-shadow: inset 0px 0px 25px #858080;
+  }

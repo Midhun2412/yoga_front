@@ -2,17 +2,19 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    
+    padding-top: 8vh;
 
 }
 
 .box{
-    width:250px;
-    height:400px;
+    
+    width:20%;
+    height:50vh;
     text-align: center;
     border: 15px #000;
     /* background-color: aliceblue; */
     color: white;
+    border-radius: 5%;
 }
 #box1{
     background-color: brown;
@@ -22,4 +24,16 @@
 }
 #box3{
     background-color: blue;
+}
+
+.artibox{
+    padding-bottom: 3vh;
+    border-radius: 50%;
+}
+
+
+#img2{
+    height: 100%;
+    width: 100%;
+    border-radius: 5%;
 }

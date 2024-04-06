@@ -9,7 +9,7 @@ const Feature2 = () => {
      <h2>FEATURE</h2> 
      <h1>Simplicity at its best</h1>
     <h6>Our commitment to simplicity ensures a seamless yoga experience.<br></br> Let our AI technology guide you towards perfecting your poses effortlessly.</h6>
-    <button className='bf2'>Learn more</button>
+    <button className='button-52'>Learn more</button>
      </div>
 
      <div className='fe' id='f1'> 

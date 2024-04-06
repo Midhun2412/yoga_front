@@ -1,0 +1,61 @@
+body {
+    background-image: url("back.jpg");
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 79vh;
+  }
+  
+
+  .Homebutton {
+    display: block;
+    margin-bottom: 5px; 
+    text-align: left;
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 3vh;
+    border-radius: 1vh;
+  }
+  
+  .Homebutton:hover {
+    background-color: rgb(61, 60, 60);
+  }
+
+  .Homebox{
+    top: 20vh;
+    padding-top: 20vh;
+    align-items: center;
+
+  }
+
+
+  .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 95%; /* Position the tooltip below the button */
+  left: 50%; /* Center the tooltip horizontally */
+  margin-left: -60px; /* Adjust horizontal position */
+}
+
+/* Show the tooltip text when hovering over the button */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+  

@@ -9,11 +9,14 @@ const First = () => {
     };
   return (
     <div className="cta">
-    <h2>Explore Various<br/> Yoga Poses</h2>
-    <p>Enhane your yoga experience</p>
-    <button className="button-49" onClick={handleButton}>Get Started</button>
+      <div>
+      <h2>Explore Various<br/> Yoga Poses</h2>
+      <h6>Enhance your yoga experience</h6>
+    <button className="button-29" onClick={handleButton}>Get Started</button>
+    </div>
   </div>
   )
 }
+
 
 export default First

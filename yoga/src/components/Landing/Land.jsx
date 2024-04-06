@@ -39,17 +39,17 @@ function Land(){
           </section>
           <section className='articles'>
           <h3>Read our latest articles</h3>
-        <p>Stay informed and inspierd with our curated yoga content</p><br/>
+        <h6>Stay informed and inspierd with our curated yoga content</h6><br/>
             <Articles />
           </section>
           <section className='feedback'>
-           <h2>Feedback from our valuable users</h2>
-           <p>Join thousands of yogis worldwide benefitting from Matyogi.Discover their experiences</p><br/>
+           <h3>Feedback from our valuable users</h3>
+           <h6>Join thousands of yogis worldwide benefitting from Matyogi.Discover their experiences</h6><br/><br></br><br></br>
           <Feedback />
           </section>
-          <section className='footer'>
+          {/* <section className='footer'>
             <Footer />
-          </section>
+          </section> */}
         </div>
       </div>
     </div>

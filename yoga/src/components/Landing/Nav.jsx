@@ -3,7 +3,7 @@ import React from 'react';
 function Nav() {
   return (
     <nav style={styles.navbar}>
-      <div style={styles.logo}>MAT YOGI</div>
+      <div style={styles.logott}>MAT YOGI</div>
       <div style={styles.navItems}>
         <a href="#home" style={styles.navLink}>Home</a>
         <a href="#about" style={styles.navLink}>About</a>

@@ -1,8 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import Posepage from './Posepage'
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import './HomePage.css';
+import Posepage from './Posepage';
 
 function HomePage() {
   const [difficulty, setDifficulty] = useState(1);
@@ -36,7 +36,7 @@ function HomePage() {
 
   function handlePose(poseName) {
     setSelectedPose(poseName);
-    window.location.href='/login/home/pose/'+uid+'/'+poseName;
+    window.location.href = '/login/home/pose/' + uid + '/' + poseName;
     // console.log(poseName)
 
   }
@@ -49,15 +49,27 @@ function HomePage() {
 
   return (
     <div>
-      <div>
-        <button onClick={() => handleClick(1)}>Easy</button>
-        <button onClick={() => handleClick(2)}>Medium</button>
-        <button onClick={() => handleClick(3)}>Hard</button>
+      <div className='Homebox'>
+        <div className='tooltip'>
+          <button className='Homebutton' onClick={() => handleClick(1)}>Easy</button><br></br>
+          <span className='tooltiptext'>Provides Easy mode of yoga poses</span>
+        </div>
+        
+        <div className='tooltip'>
+        <button className='Homebutton' onClick={() => handleClick(2)}>Intermediate</button>
+        <span className='tooltiptext'>Provides Intermediate mode of yoga poses</span>
+        </div>
+
+        <div className='tooltip'>
+        <button className='Homebutton' onClick={() => handleClick(3)}>Advanced</button>
+        <span className='tooltiptext'>Provides Advanced mode of yoga poses</span>
+        </div>
+        
       </div>
       <div>
-      {filteredDiff && filteredDiff.map((image, index) => (
-  <button key={index} onClick={() => handlePose(image.poseName)}>{image.poseName}</button>
-))}
+        {filteredDiff && filteredDiff.map((image, index) => (
+          <button className='' key={index} onClick={() => handlePose(image.poseName)}>{image.poseName}</button>
+        ))}
 
       </div>
       {selectedPose && <Posepage poseName={selectedPose} />}

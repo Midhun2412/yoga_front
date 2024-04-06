@@ -9,7 +9,7 @@ const Feature4 = () => {
     <h2>FEATURE</h2> 
     <h1>Explore new poses</h1>
    <h6>Get started with a free demo and unlock the power of YogaAI.</h6>
-   <button className='bf2'>Learn more</button>
+   <button className='button-52'>Learn more</button>
     </div>
 
     <div className='fe' id='f1'> 

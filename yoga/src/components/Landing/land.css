@@ -39,18 +39,32 @@
   }
 
   .articles h3{
+    padding-top: 10vh;
     font-size: 35px;
   }
 
-  .articles p{
-    font-size: 20px;
+  .articles h6{
+    font-size: 16px;
+    font-style: italic;
+    color:#fff;
   }
 
   .feedback{
-    padding-top: 10px;
+    padding-top: 10vh;
     text-align: center;
     background-color: black;
     color: white;
+    height: 70vh;
+  }
+
+  .feedback h3{
+    font-size: 35px;
+  }
+
+  .feedback h6{
+    font-size: 16px;
+    font-style: italic;
+    color:#fff;
   }
 
  .footer{

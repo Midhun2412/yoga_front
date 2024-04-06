@@ -3,15 +3,15 @@
    position: fixed;
   top: 20vh;
   left: 15vh;
-  width: 50vh; /* Set a maximum width if needed */
-  height: 58vh;
+  width: 40vh; /* Set a maximum width if needed */
+  height: 55vh;
   background-color: black;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 3vh;
   opacity: 0.75;
-  border-radius: 30px;
+  border-radius: 4%;
   }
   
   .form-container h2 {
@@ -21,7 +21,6 @@
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
 
   }
   
@@ -34,7 +33,7 @@
     width: 100%;
     padding: 1vh;
     margin-top:1vh;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     box-sizing: border-box;
     border-radius: 0.5vh;
   }
