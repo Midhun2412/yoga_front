@@ -1,102 +1,106 @@
 .Homepage {
-    background-image: url("back.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-  }
-  
-
-  .Homebutton {
-   
-    width:25vh;
-    margin-bottom: 5px; 
-    text-align: left;
-    background-color: gray;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 3vh;
-    border-radius: 1vh;
-  }
-  
-  .Homebutton:hover {
-    background-color: rgb(61, 60, 60);
-  }
-
-  .Homebox{
-    /* top: 20vh; */
-    /* padding-top: 20vh; */
-    align-items: center;
-    height:100vh
-  }
+  background-image: url("back.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
 
 
-  .tooltip {
-  position: relative;
-  display: inline-block;
+.Homebutton {
+  width: 190px;
+  height: 120px;
+  padding: 0.5rem;
+  background: rgba(198, 198, 198, 0.34);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.440);
+  border-left: 2px  rgba(255, 255, 255, 0.545) outset;
+  box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
+  transform: skewX(10deg);
+  transition: .6s;
+  overflow: hidden;
+  color: white;
+  font-size: 3vh;
+}
+
+.Homebutton:hover {
+  height: 200px;
+transform: skew(0deg);
+}
+
+.Homebox{
+  /* top: 20vh; */
+  /* padding-top: 20vh; */
+  align-items: center;
+  height:100vh
+}
+
+
+.tooltip {
+position: relative;
+display: inline-block;
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: white;
-  text-align: center;
-  padding: 5px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  top: 95%; /* Position the tooltip below the button */
-  left: 50%; /* Center the tooltip horizontally */
-  margin-left: -60px; /* Adjust horizontal position */
+visibility: hidden;
+width: 120px;
+background-color: black;
+color: white;
+text-align: center;
+padding: 5px;
+border-radius: 6px;
+position: absolute;
+z-index: 1;
+top: 95%; /* Position the tooltip below the button */
+left: 50%; /* Center the tooltip horizontally */
+margin-left: -60px; /* Adjust horizontal position */
 }
 
 /* Show the tooltip text when hovering over the button */
 .tooltip:hover .tooltiptext {
-  visibility: visible;
+visibility: visible;
 }
-  
+
 
 
 .Namebox{
 
-  /* background-color: blue; */
-  width:180vh;
+/* background-color: blue; */
+width:180vh;
 }
 
 .Homebox {
-  width:50vh;
-  display: flex;
-  flex-direction: column; 
-  justify-content: space-evenly; 
-  align-items: center; 
+width:50vh;
+display: flex;
+flex-direction: column; 
+justify-content: space-evenly; 
+align-items: center; 
 }
 
 .Namebox {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  grid-gap: 5px; /* Adjust the grid-gap as needed */
-  align-items: center;
-  justify-content: space-around; 
-  overflow-y: auto; 
+display: grid;
+grid-template-columns: repeat(3, 1fr); 
+grid-gap: 5px; /* Adjust the grid-gap as needed */
+align-items: center;
+justify-content: space-around; 
+overflow-y: auto; 
 }
 
 .Namebox button {
-  width: fit-content; 
-  height: 15vh; 
-  text-align: center;
-  background-color: gray;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 3vh;
-  border-radius: 2vh;
-  overflow: hidden; /* Prevent content from overflowing */
-  white-space: nowrap; /* Prevent wrapping of content */
+width: fit-content; 
+height: 15vh; 
+text-align: center;
+background-color: gray;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+font-size: 3vh;
+border-radius: 2vh;
+overflow: hidden; /* Prevent content from overflowing */
+white-space: nowrap; /* Prevent wrapping of content */
 }

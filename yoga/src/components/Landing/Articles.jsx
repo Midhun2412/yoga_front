@@ -16,7 +16,7 @@ export const Articles = () => {
         </div>
           Achieving mindfulness through yoga<br></br><br></br>
           Discover the art of mindfulness through yoga practice and unlock inner peace and tranquility.<br></br><br></br>
-          Samantha White
+          <h6>Samantha White</h6>
         </div>
         <div className='box' id='box2'>
         <div className='artibox'>
@@ -24,7 +24,7 @@ export const Articles = () => {
         </div>
         Innovate your yoga routine<br></br><br></br>
         Innovation plays a vital role in evolving your yoga practice. Embrace new techniques and approaches to elevate your yoga journey.<br></br><br></br>
-        David Green
+        <h6>David Green</h6>
         </div>
         <div className='box' id='box3'>
         <div className='artibox'>
@@ -32,7 +32,7 @@ export const Articles = () => {
         </div>
         Balance work and yoga<br></br><br></br>
         Discover harmony between work and yoga practice to lead a fulfilling and balanced lifestyle.<br></br><br></br>
-        Emily Brown
+       <h6> Emily Brown</h6>
        
         </div>    
     </div>

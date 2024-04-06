@@ -16,6 +16,13 @@
     color: white;
     border-radius: 5%;
 }
+
+.box h6{
+    font-size: 16px;
+    font-style: italic;
+    color:#fff;
+  }
+
 #box1{
     background-color: brown;
 }
