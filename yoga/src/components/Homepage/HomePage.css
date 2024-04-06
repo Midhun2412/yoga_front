@@ -104,3 +104,15 @@ border-radius: 2vh;
 overflow: hidden; /* Prevent content from overflowing */
 white-space: nowrap; /* Prevent wrapping of content */
 }
+
+.Namebox button:disabled {
+  opacity: 0.4; 
+  cursor: not-allowed; 
+  /* background-color: #ccc;  */
+  background-image: url('/public/lock.png'); 
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: 50%; 
+  background-size: cover;
+}
+

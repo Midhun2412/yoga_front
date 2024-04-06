@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import './WC.css';
 import { useParams } from 'react-router-dom';
+import TextToSpeech from './TextToSpeech';
 
 const WebcamComponent = () => {
   const { poseName } = useParams();
@@ -9,7 +10,8 @@ const WebcamComponent = () => {
 
   const webcamRef = useRef(null);
   const [isRecording, setIsRecording] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(15); // Initial time remaining in seconds
+  const [timeRemaining, setTimeRemaining] = useState(20); 
+  const [status,setStatus] = useState()
 
   const captureAndUpload = async () => {
     if (webcamRef.current) {

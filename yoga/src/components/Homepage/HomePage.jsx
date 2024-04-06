@@ -6,9 +6,10 @@ import Posepage from './Posepage';
 function HomePage() {
   const [difficulty, setDifficulty] = useState(1);
   const { uid } = useParams();
-  console.log(uid);
+  // console.log(uid);
 
   const [user, setUser] = useState({ signupname: "", signuppassword: "", signupdob: "", signupemail: "" });
+  const [info, setInfo] = useState();
   const [poseData, setPoseData] = useState(null);
   const [selectedPose, setSelectedPose] = useState(null);
 
@@ -20,6 +21,12 @@ function HomePage() {
     };
     getUser();
 
+    const getInfo = async () => {
+      const reqData = await fetch('http://127.0.0.1:8000/home/userStatus/' + uid);
+      const resData = await reqData.json();
+      setInfo(resData);
+    };
+    getInfo();
 
     const fetchData = async () => {
       try {
@@ -80,7 +87,7 @@ function HomePage() {
       </div>
       <div className='Namebox'>
         {filteredDiff && filteredDiff.map((image, index) => (
-          <button key={index} onClick={() => handlePose(image.poseName)}>{image.poseName}</button>
+          <button key={index} onClick={() => handlePose(image.poseName)}  disabled={index >info.level-1}>{image.poseName}</button>
         ))}
       </div>
     </div>
