@@ -12,21 +12,28 @@ const TextToSpeech = () => {
 
   const fetchTextFromBackend = async () => {
     try {
-      const response = await fetch('your-backend-api-url');
-      const data = await response.json();
-      setText(data.text); // Assuming your backend returns an object with 'text' property
-      speakText(data.text); // Automatically speak the received text
+      const response = await fetch('http://127.0.0.1:8000/home/correction/');
+      if (response.ok) {
+        const data = await response.json(); // Parse JSON response
+        if (data && data.length > 0 ) {
+          setText(data[0].ctext); // Set text state to "Success"
+        } else {
+          console.error('Unexpected response data:', data);
+        }
+      } else {
+        console.error('Failed to fetch text from backend');
+      }
     } catch (error) {
       console.error('Error fetching text from backend:', error);
     }
   };
 
-  const speakText = (textToSpeak) => {
+  const speakText = () => {
     if (synth.speaking) {
       return;
     }
     
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    const utterance = new SpeechSynthesisUtterance(text);
     synth.speak(utterance);
     setSpeaking(true);
     
@@ -34,6 +41,19 @@ const TextToSpeech = () => {
       setSpeaking(false);
     };
   };
+
+  return (
+    <div>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Enter text to convert to speech"
+      />
+      <button onClick={speakText} disabled={!text || speaking}>
+        {speaking ? 'Speaking...' : 'Speak'}
+      </button>
+    </div>
+  );
 };
 
 export default TextToSpeech;

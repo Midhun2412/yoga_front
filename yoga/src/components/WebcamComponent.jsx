@@ -2,19 +2,20 @@ import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import './WC.css';
 import { useParams } from 'react-router-dom';
-import TextToSpeech from './TextToSpeech';
+import TextToSpeech from './TextToSpeech'; // Import the TextToSpeech component
 
 const WebcamComponent = () => {
   const { poseName } = useParams();
   console.log(poseName);
 
   const webcamRef = useRef(null);
-  const [isRecording, setIsRecording] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(20); 
-  const [status,setStatus] = useState()
+  const [isRecording, setIsRecording] = useState(true);
+  const [timeRemaining, setTimeRemaining] = useState(10);
+  const [imageUploaded, setImageUploaded] = useState(false);
+  const [textToSpeechVisible, setTextToSpeechVisible] = useState(false); // State to track whether TextToSpeech should be visible
 
   const captureAndUpload = async () => {
-    if (webcamRef.current) {
+    if (webcamRef.current && !imageUploaded) {
       const video = webcamRef.current.video;
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
@@ -45,6 +46,7 @@ const WebcamComponent = () => {
 
         if (response.ok) {
           console.log('Image and poseName uploaded successfully!');
+          setImageUploaded(true);
         } else {
           console.error('Failed to upload image and poseName');
         }
@@ -55,26 +57,35 @@ const WebcamComponent = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsRecording(true); // Set isRecording to true to indicate recording
-      captureAndUpload(); // Capture and upload the image every 15 seconds
-
-      // Update time remaining
+    const timer = setInterval(() => {
       setTimeRemaining((prevTime) => {
-        if (prevTime === 1) {
-          clearInterval(interval); // Stop the interval when time is up
-          setIsRecording(false); // Reset isRecording to false
-          return 15; // Reset time remaining to initial value
-        } else {
-          return prevTime - 1; // Decrement time remaining
+        if(prevTime === 4)
+        {
+          captureAndUpload(); // Capture and upload the image
         }
+        if (prevTime === 0) {
+          clearInterval(timer); // Stop the interval when time is up
+          setIsRecording(false); // Set isRecording to false
+         
+        }
+        return prevTime - 1; // Decrement time remaining
       });
-    }, 1000); // Update time every second
+    }, 1000);
 
-    return () => {
-      clearInterval(interval); // Cleanup the interval on component unmount
-    };
+    return () => clearInterval(timer); // Cleanup the interval on component unmount
   }, []);
+
+  useEffect(() => {
+    // Show TextToSpeech component after the image is uploaded
+    if (imageUploaded) {
+      setTextToSpeechVisible(true);
+    }
+  }, [imageUploaded]);
+
+  if(textToSpeechVisible==="true")
+  {
+    TextToSpeech()
+  }
 
   return (
     <div className="webcam-container">
@@ -91,6 +102,8 @@ const WebcamComponent = () => {
           Time remaining: {timeRemaining} seconds
         </div>
       )}
+      {imageUploaded && <p>Image uploaded successfully!</p>}
+      
     </div>
   );
 };

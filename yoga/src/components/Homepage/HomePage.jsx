@@ -87,12 +87,11 @@ function HomePage() {
       </div>
       <div className='Namebox'>
         {filteredDiff && filteredDiff.map((image, index) => (
-          <button key={index} onClick={() => handlePose(image.poseName)}  disabled={index >info.level-1}>{image.poseName}</button>
+          <button key={index} onClick={() => handlePose(image.poseName)} disabled={info && index >= info.level}>{image.poseName}</button>
         ))}
       </div>
     </div>
   );
 }
-
 
 export default HomePage;
