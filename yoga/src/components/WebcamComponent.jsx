@@ -12,10 +12,21 @@ const WebcamComponent = () => {
   const [isRecording, setIsRecording] = useState(true);
   const [timeRemaining, setTimeRemaining] = useState(10);
   const [imageUploaded, setImageUploaded] = useState(false);
-  const [textToSpeechVisible, setTextToSpeechVisible] = useState(false);
+  const [del, setDel] = useState(false)
   const [text, setText] = useState('');
   const [speaking, setSpeaking] = useState(false);
   const synth = window.speechSynthesis;
+
+  useEffect(() => {
+    // Timer for window.location.href after 12 seconds
+    const redirectTimer = setTimeout(() => {
+      // window.location.href = 'your_destination_url';
+      console.log("hi")
+    }, 12000); // 12 seconds in milliseconds
+
+    return () => clearTimeout(redirectTimer); // Clean up the timer on unmount
+  }, []);
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -46,6 +57,13 @@ const WebcamComponent = () => {
       speakText(); // Speak text whenever text state is updated
     }
   }, [text]); // Watch for changes in the text state
+
+  useEffect(() => {
+    // Make API call when del is true
+    if (del) {
+      deleteImage();
+    }
+  }, [del]);
 
   const captureAndUpload = async () => {
     if (webcamRef.current && !imageUploaded) {
@@ -93,9 +111,12 @@ const WebcamComponent = () => {
     try {
       const response = await fetch('http://127.0.0.1:8000/home/correction/');
       if (response.ok) {
+        setDel(true);
         const data = await response.json(); // Parse JSON response
         if (data && data.length > 0) {
-          setText(data[0].ctext); // Set text state to "Success"
+          const ctext = data[0].ctext;
+          const newText = ctext.replace(/[\s.]+/g, ' ');
+          setText(newText); // Set text state to "Success"
         } else {
           console.error('Unexpected response data:', data);
         }
@@ -121,22 +142,41 @@ const WebcamComponent = () => {
     };
   };
 
+  const deleteImage = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/home/imgdelete/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      });
+      const responseData = await response.json();
+      console.log("deletion request successfull");
+    } catch (error) {
+      console.error('Error posting message', error);
+    }
+  };
+
+  
   return (
     <div className="webcam-container">
-      <Webcam
-        style={{ transform: 'scaleX(-1)' }}
+      <Webcam className='webcam'
+        style={{ transform: 'scaleX(-1)',
+                 width: '110vh',
+                 height: '110vh',
+                 }}
         audio={false}
-        height={480}
         ref={webcamRef}
         screenshotFormat="image/png"
-        width={640}
       />
       {isRecording && (
         <div className="countdown-timer">
-          Time remaining: {timeRemaining} seconds
+         <p>Time remaining: {timeRemaining} seconds</p> 
         </div>
       )}
-      {imageUploaded && <p>Image uploaded successfully!</p>}
+
+{!isRecording && text && <p>Correction: <br/> {text}</p>}
     </div>
   );
 };

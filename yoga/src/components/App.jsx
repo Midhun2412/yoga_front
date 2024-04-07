@@ -9,6 +9,7 @@ import WebcamComponent from "./WebcamComponent";
 import HomePage from "./Homepage/HomePage";
 import Posepage from "./Homepage/Posepage";
 import Timer from "./Extra/Timer";
+import Complete from "./Homepage/Complete";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login/home/pose/:uid/:poseName" element={<Posepage />} />
           <Route path="/timer/:uid/:poseName" element={Timer} />
           <Route path="/login/home/start/:uid/:poseName" element={<WebcamComponent />} />
+          <Route path="/complete" element={<Complete />} />
         </Routes>
         </BrowserRouter>
     </div>

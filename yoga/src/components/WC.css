@@ -1,8 +1,24 @@
 .webcam-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     height: 100vh;
-    background-color: #333;
+    /* background-color: #333; */
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("/public/webcam.jpeg");
+  }
+
+  
+
+  .webcam-container p{
+    padding-top: 20vh;
+    padding-left: 20vh;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: larger;
   }
   
+
+   

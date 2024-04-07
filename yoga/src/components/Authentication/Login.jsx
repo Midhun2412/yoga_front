@@ -31,6 +31,7 @@ function Login(){
       if (data === "SUCCESS") {
         const uid = email;
         navigate('/login/home/'+uid);
+        // navigate('/complete');
         console.log("success");
       } else {
         window.alert("Please check your login");

@@ -1,0 +1,12 @@
+.animate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the container height to 100% of the viewport height */
+  }
+  
+  .loading-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  

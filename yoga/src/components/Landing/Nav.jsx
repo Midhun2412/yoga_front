@@ -4,8 +4,8 @@ function Nav() {
     <nav style={styles.navbar}>
       <div style={styles.logott}>MAT YOGI</div>
       <div style={styles.navItems}>
-        <a href="#home" style={styles.navLink}>Home</a>
-        <a href="#about" style={styles.navLink}>About</a>
+        <a href="/" style={styles.navLink}>Home</a>
+        <a href="/about" style={styles.navLink}>About</a>
         <a href="#features" style={styles.navLink}>Features</a>
       </div>
     </nav>

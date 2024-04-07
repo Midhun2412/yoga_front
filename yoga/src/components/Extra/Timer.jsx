@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook from react-router-dom
-import './Timer.css';
+// import './Timer.css';
 
 function Counter() {
   const [count, setCount] = useState(3); // Initial count value
