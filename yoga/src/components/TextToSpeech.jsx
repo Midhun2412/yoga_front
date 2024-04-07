@@ -10,12 +10,18 @@ const TextToSpeech = () => {
     fetchTextFromBackend();
   }, []);
 
+  useEffect(() => {
+    if (text && text.length > 0) {
+      speakText(); // Speak text whenever text state is updated
+    }
+  }, [text]); // Watch for changes in the text state
+
   const fetchTextFromBackend = async () => {
     try {
       const response = await fetch('http://127.0.0.1:8000/home/correction/');
       if (response.ok) {
         const data = await response.json(); // Parse JSON response
-        if (data && data.length > 0 ) {
+        if (data && data.length > 0) {
           setText(data[0].ctext); // Set text state to "Success"
         } else {
           console.error('Unexpected response data:', data);
@@ -44,14 +50,14 @@ const TextToSpeech = () => {
 
   return (
     <div>
-      <textarea
+      {/* <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter text to convert to speech"
-      />
-      <button onClick={speakText} disabled={!text || speaking}>
+      /> */}
+      {/* <button onClick={speakText} disabled={!text || speaking}>
         {speaking ? 'Speaking...' : 'Speak'}
-      </button>
+      </button> */}
     </div>
   );
 };

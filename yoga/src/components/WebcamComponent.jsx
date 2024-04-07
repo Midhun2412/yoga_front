@@ -12,7 +12,40 @@ const WebcamComponent = () => {
   const [isRecording, setIsRecording] = useState(true);
   const [timeRemaining, setTimeRemaining] = useState(10);
   const [imageUploaded, setImageUploaded] = useState(false);
-  const [textToSpeechVisible, setTextToSpeechVisible] = useState(false); // State to track whether TextToSpeech should be visible
+  const [textToSpeechVisible, setTextToSpeechVisible] = useState(false);
+  const [text, setText] = useState('');
+  const [speaking, setSpeaking] = useState(false);
+  const synth = window.speechSynthesis;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeRemaining((prevTime) => {
+        if (prevTime === 4) {
+          captureAndUpload(); // Capture and upload the image
+        }
+        if (prevTime === 0) {
+          clearInterval(timer); // Stop the interval when time is up
+          setIsRecording(false); // Set isRecording to false
+        }
+        return prevTime - 1; // Decrement time remaining
+      });
+    }, 1000);
+
+    return () => clearInterval(timer); // Cleanup the interval on component unmount
+  }, []);
+
+  useEffect(() => {
+    // Show TextToSpeech component after the image is uploaded
+    if (imageUploaded) {
+      fetchTextFromBackend();
+    }
+  }, [imageUploaded]);
+
+  useEffect(() => {
+    if (text && text.length > 0) {
+      speakText(); // Speak text whenever text state is updated
+    }
+  }, [text]); // Watch for changes in the text state
 
   const captureAndUpload = async () => {
     if (webcamRef.current && !imageUploaded) {
@@ -56,36 +89,37 @@ const WebcamComponent = () => {
     }
   };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeRemaining((prevTime) => {
-        if(prevTime === 4)
-        {
-          captureAndUpload(); // Capture and upload the image
+  const fetchTextFromBackend = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/home/correction/');
+      if (response.ok) {
+        const data = await response.json(); // Parse JSON response
+        if (data && data.length > 0) {
+          setText(data[0].ctext); // Set text state to "Success"
+        } else {
+          console.error('Unexpected response data:', data);
         }
-        if (prevTime === 0) {
-          clearInterval(timer); // Stop the interval when time is up
-          setIsRecording(false); // Set isRecording to false
-         
-        }
-        return prevTime - 1; // Decrement time remaining
-      });
-    }, 1000);
-
-    return () => clearInterval(timer); // Cleanup the interval on component unmount
-  }, []);
-
-  useEffect(() => {
-    // Show TextToSpeech component after the image is uploaded
-    if (imageUploaded) {
-      setTextToSpeechVisible(true);
+      } else {
+        console.error('Failed to fetch text from backend');
+      }
+    } catch (error) {
+      console.error('Error fetching text from backend:', error);
     }
-  }, [imageUploaded]);
+  };
 
-  if(textToSpeechVisible==="true")
-  {
-    TextToSpeech()
-  }
+  const speakText = () => {
+    if (synth.speaking) {
+      return;
+    }
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    synth.speak(utterance);
+    setSpeaking(true);
+    
+    utterance.onend = () => {
+      setSpeaking(false);
+    };
+  };
 
   return (
     <div className="webcam-container">
@@ -103,7 +137,6 @@ const WebcamComponent = () => {
         </div>
       )}
       {imageUploaded && <p>Image uploaded successfully!</p>}
-      
     </div>
   );
 };
