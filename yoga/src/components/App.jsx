@@ -23,7 +23,7 @@ function App() {
           <Route path="/login/home/pose/:uid/:poseName" element={<Posepage />} />
           <Route path="/timer/:uid/:poseName" element={Timer} />
           <Route path="/login/home/start/:uid/:poseName" element={<WebcamComponent />} />
-          <Route path="/complete" element={<Complete />} />
+          <Route path="/complete/:uid" element={<Complete />} />
         </Routes>
         </BrowserRouter>
     </div>

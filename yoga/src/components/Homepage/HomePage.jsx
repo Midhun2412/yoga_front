@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './HomePage.css';
 import Posepage from './Posepage';
+import Logout from '../Authentication/Logout';
 
 function HomePage() {
   const [difficulty, setDifficulty] = useState(1);
@@ -68,7 +69,9 @@ function HomePage() {
   }, [filteredDiff]);
 
   return (
-    <div className='Homepage'>
+    <div className='Home'>
+      <Logout />
+      <div className='Homepage'>
       <div className='Homebox'>
         <div className='tooltip'>
           <button className='Homebutton' onClick={() => handleClick(1)}>Easy</button><br></br>
@@ -90,6 +93,7 @@ function HomePage() {
           <button key={index} onClick={() => handlePose(image.poseName)} disabled={info && index >= info.level}>{image.poseName}</button>
         ))}
       </div>
+    </div>
     </div>
   );
 }

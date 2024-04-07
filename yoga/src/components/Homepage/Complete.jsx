@@ -1,62 +1,68 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Animate from './success.gif';
 import './complete.css';
+
 const Complete = () => {
-  const [data, setData] = useState({});
+  const { uid } = useParams();
   const [loading, setLoading] = useState(true);
+  const [info, setInfo] = useState(null); // Initialize info state as null
+
+  useEffect(() => {
+    const redirectTimer = setTimeout(() => {
+      window.location.href = '/login/home/' + uid;
+    }, 3000);
+
+    return () => clearTimeout(redirectTimer);
+  }, [uid]); // Include uid in the dependency array
+
+  const payload = {
+    updatelevel: info?.level + 1, // Access level property of info using optional chaining
+    email: uid,
+  };
 
   const LevelUpdate = async () => {
     try {
-      const response = await fetch('https://api1.example.com/post', {
+      const response = await fetch('http://127.0.0.1:8000/home/levelupdate/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
       const responseData = await response.json();
       console.log(responseData);
     } catch (error) {
-      console.error('Error posting data to API 1:', error);
-    }
-  };
-
-  const IndexUpdate = async () => {
-    try {
-      const response = await fetch('https://api2.example.com/post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-      const responseData = await response.json();
-      console.log(responseData);
-    } catch (error) {
-      console.error('Error posting data to API 2:', error);
+      console.error('Error updating level:', error);
     }
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Set loading state to true when fetching starts
-      await LevelUpdate();
-      await IndexUpdate();
-      setLoading(false); // Set loading state to false when fetching completes
+      try {
+        setLoading(true); // Set loading state to true when fetching starts
+        const reqData = await fetch('http://127.0.0.1:8000/home/userStatus/' + uid);
+        const resData = await reqData.json();
+        setInfo(resData);
+        await LevelUpdate();
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false); // Set loading state to false when fetching completes
+      }
     };
 
     fetchData();
-  }, []); 
+  }, [uid]); // Include uid as a dependency in useEffect
 
   return (
     <div className="animate">
-    {loading ? (
-      <img className="loading-image" src="success.gif" alt="Loading" />
-    ) : (
-      // <div>Complete</div>
-      <img className="loading-image" src={Animate} alt="Loading" />
-    )}
-  </div>
+      {loading ? (
+        <img className="loading-image" src="success.gif" alt="Loading" />
+      ) : (
+        <img className="loading-image" src={Animate} alt="Success" />
+      )}
+    </div>
   );
 };
 

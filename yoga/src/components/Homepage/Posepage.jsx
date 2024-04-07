@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import DemoPose from'./DemoPose'
 import './HomePage.css'
+import Logout from '../Authentication/Logout'
 
 function Posepage( ){
     const {uid} =useParams();
@@ -22,10 +23,11 @@ function Posepage( ){
   },[]);
   
   // console.log(poseName);
-  // console.log(user);
+  console.log(user);
   
     return (
       <div className='Posepage'>
+        <Logout />
         <div className='homep' id='#hp1'>
           <h1><span className="chfont">Hello</span> {user.signupname}</h1>
           <p id="pg1">Welcome To MATYOGI</p>

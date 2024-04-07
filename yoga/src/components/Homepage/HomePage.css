@@ -1,9 +1,18 @@
-.Homepage {
+.Home{
   background-image: url("back.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.Homepage {
+  
   display: flex;
   flex-direction: row;
 }

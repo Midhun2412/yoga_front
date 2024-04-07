@@ -6,6 +6,7 @@ import TextToSpeech from './TextToSpeech'; // Import the TextToSpeech component
 
 const WebcamComponent = () => {
   const { poseName } = useParams();
+  const { uid } = useParams();
   console.log(poseName);
 
   const webcamRef = useRef(null);
@@ -15,18 +16,26 @@ const WebcamComponent = () => {
   const [del, setDel] = useState(false)
   const [text, setText] = useState('');
   const [speaking, setSpeaking] = useState(false);
+  const [res, setRes] = useState();
   const synth = window.speechSynthesis;
 
   useEffect(() => {
-    // Timer for window.location.href after 12 seconds
+    
     const redirectTimer = setTimeout(() => {
-      // window.location.href = 'your_destination_url';
-      console.log("hi")
-    }, 12000); // 12 seconds in milliseconds
+      if(res===0)
+      {
+       window.location.href = '/complete/'+uid;
+      }
+      
+    else{
+      window.location.href = '/login/home/start/'+uid+'/'+poseName;
+    }
+      
+    }, 12000); 
 
-    return () => clearTimeout(redirectTimer); // Clean up the timer on unmount
-  }, []);
-
+    return () => clearTimeout(redirectTimer); 
+  }, [res]);
+  
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -112,11 +121,13 @@ const WebcamComponent = () => {
       const response = await fetch('http://127.0.0.1:8000/home/correction/');
       if (response.ok) {
         setDel(true);
-        const data = await response.json(); // Parse JSON response
+        const data = await response.json(); 
         if (data && data.length > 0) {
+          
           const ctext = data[0].ctext;
           const newText = ctext.replace(/[\s.]+/g, ' ');
-          setText(newText); // Set text state to "Success"
+          setText(newText); 
+          setRes(data[0].res);
         } else {
           console.error('Unexpected response data:', data);
         }
