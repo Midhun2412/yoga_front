@@ -62,7 +62,8 @@ const YourComponent = ({ poseName, uid }) => {
   }, [poseData, poseName]);
 
   const handleClick = () => {
-    window.location.href = '/login/home/start/'+uid+'/'+poseName;//link to webcam component
+    window.location.href = '/time/'+uid+'/'+poseName;
+  
   };
 
   return (

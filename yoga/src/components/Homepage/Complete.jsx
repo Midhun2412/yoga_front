@@ -9,51 +9,58 @@ const Complete = () => {
   const [info, setInfo] = useState(null); // Initialize info state as null
 
   useEffect(() => {
-    const redirectTimer = setTimeout(() => {
-      window.location.href = '/login/home/' + uid;
-    }, 3000);
-
-    return () => clearTimeout(redirectTimer);
-  }, [uid]); // Include uid in the dependency array
-
-  const payload = {
-    updatelevel: info?.level + 1, // Access level property of info using optional chaining
-    email: uid,
-  };
-
-  const LevelUpdate = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:8000/home/levelupdate/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-      const responseData = await response.json();
-      console.log(responseData);
-    } catch (error) {
-      console.error('Error updating level:', error);
-    }
-  };
-
-  useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true); // Set loading state to true when fetching starts
         const reqData = await fetch('http://127.0.0.1:8000/home/userStatus/' + uid);
         const resData = await reqData.json();
         setInfo(resData);
-        await LevelUpdate();
+        setLoading(false); // Set loading state to false when fetching completes
       } catch (error) {
         console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false); // Set loading state to false when fetching completes
+        setLoading(false); // Ensure loading state is set to false on error
       }
     };
 
     fetchData();
   }, [uid]); // Include uid as a dependency in useEffect
+
+  useEffect(() => {
+    const redirectTimer = setTimeout(() => {
+      window.location.href = '/login/home/' + uid;
+    }, 3000);
+
+    return () => clearTimeout(redirectTimer);
+  }, [uid]); 
+
+  const payload = {
+    updatelevel: info && info.level ? info.level + 1 : 1, // If info and info.level exist, increment info.level by 1, otherwise set updatelevel to 1
+    email: uid,
+  };
+
+  const LevelUpdate = async () => {
+    try {
+      console.log(payload);
+      const response = await fetch('http://127.0.0.1:8000/home/levelupdate/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+        
+      });
+      console.log(info);
+      const responseData = await response.json();
+    } catch (error) {
+      console.error('Error updating level:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (info) {
+      LevelUpdate(); // Call LevelUpdate only if info is truthy
+    }
+  }, [info]); // Include info as a dependency in useEffect
 
   return (
     <div className="animate">

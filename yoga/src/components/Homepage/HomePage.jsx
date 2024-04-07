@@ -23,11 +23,16 @@ function HomePage() {
     getUser();
 
     const getInfo = async () => {
-      const reqData = await fetch('http://127.0.0.1:8000/home/userStatus/' + uid);
-      const resData = await reqData.json();
-      setInfo(resData);
+      try {
+        const reqData = await fetch('http://127.0.0.1:8000/home/userStatus/' + uid);
+        const resData = await reqData.json();
+        setInfo(resData);
+      } catch (error) {
+        console.error('Error fetching user status:', error);
+      }
     };
     getInfo();
+   
 
     const fetchData = async () => {
       try {
@@ -52,7 +57,7 @@ function HomePage() {
 
   // Filter by difficulty
   const filteredDiff = poseData ? poseData.filter(item => item.index_no === difficulty) : [];
-  console.log(filteredDiff);
+  
 
   useEffect(() => {
     // JavaScript logic to handle button sizing

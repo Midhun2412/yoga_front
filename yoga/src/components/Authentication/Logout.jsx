@@ -8,11 +8,11 @@ function handleLogout(){
 
   return (
     <div className='logout-link'>
-        <button class="learn-more" onClick={handleLogout}>
-  <span class="circle" aria-hidden="true">
-  <span class="icon arrow"></span>
+        <button className="learn-more" onClick={handleLogout}>
+  <span className="circle" aria-hidden="true">
+  <span className="icon arrow"></span>
   </span>
-  <span class="button-text">Logout</span>
+  <span className="button-text">Logout</span>
 </button>
     </div>
   )
